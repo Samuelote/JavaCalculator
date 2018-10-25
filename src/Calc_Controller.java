@@ -114,12 +114,15 @@ public class Calc_Controller extends Application {
 	// Passing to calculate via reference.
 	// Also I think this may constitute as a 
 	// method overload because this method is called
-	// calculate and inside of it I'm calling the Calculate
+	// calculate and inside of it I'm calling the calculate
+	// method from the Calculator class.
 	public void calculate(ActionEvent args) {
 		
 		Calculator c = new Calculator();
 		String answerText = "";
 		if (isNumeric(num1.getText()) && isNumeric(num2.getText())) {
+//			Eval eval = new Eval(num1.getText()+(String) comboBox.getValue()+num2.getText());
+//			answerText = " = "+ Double.toString(eval.start());
 			int number1 = Integer.parseInt(num1.getText());
 			int number2 = Integer.parseInt(num2.getText());
 			answerText = " = "+ Integer.toString(c.calculate(number1, number2, (String) comboBox.getValue()));
