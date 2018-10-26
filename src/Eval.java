@@ -15,6 +15,7 @@ public class Eval {
 	private static double finalAnswer = 0;
 	public Eval(String problem)
 	{
+		finalAnswer = 0;
 		this.problem = problem;
 	}
 	
@@ -70,7 +71,6 @@ public class Eval {
                 number2 += item;
             }
 	    }
-        
         double num1 = Double.parseDouble(number1);
         double num2 = Double.parseDouble(number2);
         if (operator.codePointAt(0) == "*".codePointAt(0)) {
@@ -85,31 +85,37 @@ public class Eval {
     
     //Calculates final answer 
     private static void findAnswer(String str) {
+
     	String num = "";
     	String op = "";
-    	System.out.println(str+"\n");
-    	for (int i = 0; i < str.length(); i++) {
-            String item = Character.toString(str.charAt(i));
-			if ((isNumeric(item) || item.equals("."))) {
-				num += item;
-				if (i == str.length()-1) {
-					addOrSubtract(Double.parseDouble(num), op);
-				}
-			} else if (op.equals("")){
-				addOrSubtract(Double.parseDouble(num), "+");
-				num = "";
-				op = item;
-			} else {
-				addOrSubtract(Double.parseDouble(num), op);
-				num = "";
-				op = item;
-			}
-    		
+    	if (isNumeric(str)) finalAnswer = Double.parseDouble(str);
+    	else {
+    		for (int i = 0; i < str.length(); i++) {
+                String item = Character.toString(str.charAt(i));
+    			if ((isNumeric(item) || item.equals("."))) {
+    				num += item;
+    				if (i == str.length()-1) {
+    					addOrSubtract(Double.parseDouble(num), op);
+    				}
+    			} else if (op.equals("")){
+    				addOrSubtract(Double.parseDouble(num), "+");
+    				num = "";
+    				op = item;
+    			} else {
+    				addOrSubtract(Double.parseDouble(num), op);
+    				num = "";
+    				op = item;
+    			}
+        		
+        	}
     	}
+    	
     }
     
     //General calculation for final addition and subtraction
     private static void addOrSubtract(double number, String operator ) {
+//        System.out.println("oper: "+ operator);
+
 		if (operator.codePointAt(0) == "+".codePointAt(0)) {
 			finalAnswer += number;
 		} else {

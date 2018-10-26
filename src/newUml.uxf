@@ -4,22 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>20</y>
-      <w>210</w>
-      <h>190</h>
-    </coordinates>
-    <panel_attributes>Calculator
--
-+ Calculate int
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>20</x>
-      <y>20</y>
+      <x>0</x>
+      <y>60</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
@@ -39,12 +25,34 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>220</x>
-      <y>80</y>
+      <x>200</x>
+      <y>120</y>
       <w>190</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>70</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Eval
+-
+- String problem
+- finalAnswer double
+-
++ start double
+- getPhrase str
+- multiplyOrDivide str
+- findAnswer void
+- addOrSubtract void
+- isNumeric boolean
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
