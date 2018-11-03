@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,44 +17,22 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
-
-/*
- * *****************************************************
- * Author: Samuel Wood
- * Title: Simple Calculator!
- * Description: This is the visual aspect that calls the Eval class based on user inputs.
- * ******************************************************
- */
-
-
-public class Calc_Controller extends Application {
+public class Basic_Calculator {
+	
 	private final TextField num1 = new TextField();
 	private final TextField num2 = new TextField();
 	private final ComboBox<String> comboBox = new ComboBox();
 	private Text answer = new Text();
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
-	
-	// Skip to the bottom for the new shiz Cassens...
-	
-	// Passing to start via reference.
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		FlowPane base = new FlowPane();		
-		String instructions = this.readFile();
+		String versionType = "This is the unpaid version";
 		base.widthProperty();
-		Text direction = new Text(0,0, instructions);
-		HBox myBox = new HBox(direction);
+		Text Title = new Text(0,0, versionType);
+		HBox myBox = new HBox(Title);
 		myBox.setPadding(new Insets(40,40,100,100));
 		base.getChildren().add(myBox);
-		
-		
 
-		
         num1.setPromptText("Enter a number");
         num1.setPrefColumnCount(10);
         num1.getText();
@@ -92,24 +69,8 @@ public class Calc_Controller extends Application {
 		primaryStage.setTitle("My Calculator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
 	}
 	
-	public String readFile() throws FileNotFoundException {
-
-		File myFile = new File("./src/Instructions");	
-		Scanner myFileScanner = new Scanner(myFile);	
-		String instructions = "";
-		
-		while(myFileScanner.hasNextLine())
-		{
-			String line  = myFileScanner.nextLine();
-			
-			instructions += line+"\n";	
-			
-		}
-		return instructions;
-	}
 	
 	public void calculate(ActionEvent args) {
 		
@@ -130,5 +91,4 @@ public class Calc_Controller extends Application {
 	private boolean isNumeric(String s) {  
 		return s != null && s.matches("[-+]?\\d*\\.?\\d+");  
 	}
-
 }
